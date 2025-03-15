@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Markdown to HTML Converter</title>
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Marked.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -16,10 +19,12 @@
         
         <div id="output"></div>
         
-        <!-- New buttons for Copy & Download -->
-        <button id="convert-btn">Convert</button>
-        <button id="copy-btn">Copy HTML</button>
-        <button id="download-btn">Download HTML</button>
+        <!-- Updated button container -->
+        <div class="button-container">
+            <button id="convert-btn">Convert</button>
+            <button id="copy-btn">Copy HTML</button>
+            <button id="download-btn">Download HTML</button>
+        </div>
     </div>
 
     <script src="script.js"></script>

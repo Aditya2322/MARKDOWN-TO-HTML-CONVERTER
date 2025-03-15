@@ -1,7 +1,8 @@
-async function convertMarkdown() {
+// Convert Markdown to HTML using Marked.js
+function convertMarkdown() {
     const markdown = document.getElementById("markdown").value;
-    const convertBtn = document.getElementById("convert-btn");
     const outputDiv = document.getElementById("output");
+    const convertBtn = document.getElementById("convert-btn");
 
     if (!markdown.trim()) {
         outputDiv.innerHTML = "";
@@ -9,14 +10,8 @@ async function convertMarkdown() {
         return;
     }
 
-    const response = await fetch("http://localhost:5000/convert", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ markdown })
-    });
-
-    const data = await response.json();
-    outputDiv.innerHTML = data.html;
+    // Convert Markdown to HTML using marked.js
+    outputDiv.innerHTML = marked.parse(markdown);
 
     // Hide Convert button after conversion
     convertBtn.style.display = "none";
@@ -45,6 +40,11 @@ function downloadHTML() {
     a.click();
     document.body.removeChild(a);
 }
+
+// Show Convert button again when user types new input
+document.getElementById("markdown").addEventListener("input", () => {
+    document.getElementById("convert-btn").style.display = "block";
+});
 
 // Attach event listeners after DOM is loaded
 document.getElementById("convert-btn").addEventListener("click", convertMarkdown);
